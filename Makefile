@@ -1,11 +1,15 @@
 NAME	=	push_swap
 
-CFLAGS	=	#-fsanitize=address -glldb# -Wall -Wextra -Werror
+CFLAGS	=	-g # -Wall -Wextra -Werror
+
+f		=	-fsanitize=address
 
 DEP		=	Makefile push_swap.h
 
 FILES	=	push_swap.c \
 			parse.c \
+			swap.c \
+			
 			
 
 LIB		=	./libft
@@ -24,7 +28,7 @@ all: libs $(NAME)
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) $(CFLAGS) $(IFLAGS) $(LFLAGS) -o $(NAME)
+	$(CC) $(OBJS) $(CFLAGS) $(f) $(IFLAGS) $(LFLAGS) -o $(NAME)
 
 clean: libs
 	rm -f *.o

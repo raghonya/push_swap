@@ -12,20 +12,20 @@
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+static char	*brat(const char *s1, const char *s2, size_t s1len, size_t s2len)
 {
 	size_t	i;
-	size_t	k;
+	int		k;
 	char	*s;
 
 	i = 0;
 	k = 0;
-	s = malloc (sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 2));
+	s = malloc(s1len + s2len + 2);
 	if (!s)
 		return (NULL);
-	while (i < ft_strlen(s1) + ft_strlen(s2))
+	while (i < s1len + s2len)
 	{
-		if (i < ft_strlen(s1))
+		if (i < s1len)
 			s[i] = s1[i];
 		else
 			s[i] = s2[k++];
@@ -33,6 +33,20 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	s[i++] = ' ';
 	s[i] = 0;
+	return (s);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	size_t	s1len;
+	size_t	s2len;
+	char	*s;
+
+	s1len = ft_strlen(s1);
+	s2len = ft_strlen(s2);
+	s = brat(s1, s2, s1len, s2len);
+	if (!s)
+		return (NULL);
 	if (*s1)
 		free((char *)s1);
 	return (s);
