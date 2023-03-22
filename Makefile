@@ -8,10 +8,11 @@ DEP		=	Makefile push_swap.h
 
 FILES	=	push_swap.c \
 			parse.c \
+			push.c \
 			swap.c \
+			rotate.c \
+			r_rotate.c \
 			
-			
-
 LIB		=	./libft
 
 PLIB	=	./Printf
@@ -22,23 +23,31 @@ LFLAGS	=	-L$(PLIB) -lftprintf -L$(LIB) -lft
 
 OBJS	=	$(FILES:.c=.o)
 
+ifeq ($(MAKECMDGOALS), bonus)
+	CMD	=	all
+else
+	CMD	=	$(MAKECMDGOALS)
+endif
+
 all: libs $(NAME)
 
-%.o: %.c $(DEP)
+%.o: %.c $(DEP) 
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
 	$(CC) $(OBJS) $(CFLAGS) $(f) $(IFLAGS) $(LFLAGS) -o $(NAME)
+
+
+libs:
+	@$(MAKE) $(MAKECMDGOALS) -C $(LIB)
+	@$(MAKE) $(MAKECMDGOALS) -C $(PLIB)
+
 
 clean: libs
 	rm -f *.o
 
 fclean: clean
 	rm -f $(NAME)
-
-libs:
-	@$(MAKE) $(MAKECMDGOALS) -C $(LIB)
-	@$(MAKE) $(MAKECMDGOALS) -C $(PLIB)
 
 re:	fclean all
 
