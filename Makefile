@@ -1,17 +1,19 @@
 NAME	=	push_swap
 
-CFLAGS	=	-g # -Wall -Wextra -Werror
+CFLAGS	=	#-Wall -Wextra -Werror
 
-f		=	-fsanitize=address
+f		=	-fsanitize=address -g
 
 DEP		=	Makefile push_swap.h
 
 FILES	=	push_swap.c \
 			parse.c \
+			parse_norm.c \
 			push.c \
 			swap.c \
 			rotate.c \
 			r_rotate.c \
+			indexing.c \
 			
 LIB		=	./libft
 
@@ -37,14 +39,12 @@ all: libs $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(OBJS) $(CFLAGS) $(f) $(IFLAGS) $(LFLAGS) -o $(NAME)
 
-
 libs:
 	@$(MAKE) $(MAKECMDGOALS) -C $(LIB)
 	@$(MAKE) $(MAKECMDGOALS) -C $(PLIB)
 
-
 clean: libs
-	rm -f *.o
+	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)

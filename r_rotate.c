@@ -4,7 +4,7 @@ int	rrotate(t_stack **head)
 {
 	t_stack	*tmp;
 	t_stack	*tmp2;
-	
+
 	if (!(*head) || !(*head)->next || !head)
 		return (0);
 	tmp = *head;

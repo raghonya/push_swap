@@ -7,9 +7,11 @@ static int	push(t_stack **h1, t_stack **h2)
 	if (!(*h1) || !h1)
 		return (0);
 	tmp = (*h1)->next;
-	tmp->prev = NULL;
+	if (tmp)
+		tmp->prev = NULL;
+	if (*h2)
+		(*h2)->prev = *h1;
 	(*h1)->next = *h2;
-	(*h2)->prev = *h1;
 	*h2 = *h1;
 	*h1 = tmp;
 	return (1);
@@ -24,5 +26,5 @@ void	push_a(t_stack **h1, t_stack **h2)
 void	push_b(t_stack **h1, t_stack **h2)
 {
 	if (push(h1, h2))
-		ft_printf ("pa\n");
+		ft_printf ("pb\n");
 }

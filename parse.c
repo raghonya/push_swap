@@ -1,24 +1,5 @@
 #include <push_swap.h>
 
-void	nodeadd_back(t_stack **head, t_stack *new)
-{
-	t_stack	*a;
-
-	err_push(!head);
-	if (!(*head))
-	{
-		new->prev = NULL;
-		*head = new;
-		return ;
-	}
-	a = *head;
-	while ((*head)->next)
-		*head = (*head)->next;
-	new->prev = *head;
-	(*head)->next = new;
-	*head = a;
-}
-
 char	**create_nums(int argc, char **argv)
 {
 	char	**nums;
@@ -41,28 +22,19 @@ char	**create_nums(int argc, char **argv)
 
 void	check_ascend(t_stack *a)
 {
-	int		flag;
 	int		size;
 	t_stack	*tmp;
 
-	flag = 0;
-	size = 0;
-	tmp = a;
-	while (a)
-	{
-		size++;
-		a = a->next;
-	}
-	if (size == 2)
-	a = a->next;
-	while (a->next)
-	{
-		if (!(a->value > a->prev->value && a->value < a->next->value))
-			flag = 1;
-		a = a->next;
-	}
-	if (flag == 0)
+	size = lstsize(a);
+	if (size < 2)
 		exit (0);
+	if (size == 2)
+	{
+		if (a->value < a->next->value)
+			exit(0);
+		return ;
+	}
+	check_ascend_2(a->next);
 }
 
 void	check_back(t_stack *a, int tiv)
@@ -76,7 +48,6 @@ void	check_back(t_stack *a, int tiv)
 
 void	check_args(t_stack **a, int argc, char **argv)
 {
-	t_stack	*tmp;
 	t_stack	*new;
 	char	**nums;
 	int		i;
@@ -92,14 +63,9 @@ void	check_args(t_stack **a, int argc, char **argv)
 		nodeadd_back(a, new);
 		check_back(*a, new->value);
 	}
-	// check_ascend(*a);
+	check_ascend(*a);
 	i = -1;
 	while (nums[++i])
 		free(nums[i]);
 	free(nums);
-	i = -1;
-	// while (*a != NULL)
-	// 	{printf ("%d\n", (*a)->value);
-	// 	*a = (*a)->next;}
-	
 }

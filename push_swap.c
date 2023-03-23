@@ -11,7 +11,6 @@ void	err_push(int a)
 
 void	print(t_stack *a)
 {
-	// printf ("printi ardyunq\n");
 	while (a != NULL)
 	{
 		printf ("%d\n", a->value);
@@ -23,20 +22,26 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	
+
 	if (argc == 1)
 		return (0);
 	check_args(&a, argc, argv);
-	printf ("do rotate\n\n");
+	indexing(&a);
+	// merge();
+	// printf ("do gorcox\n\n");
+	// print (a);
+	// rotate(&a);
+	// printf ("\nposle gorcox\n\n");
+	// print (a);	
+	printf ("\ndo swap\n\n");
 	print (a);
-	rotate(&a);
-	printf ("\nposle rotate\n\n");
+	swap_a(&a);
+	printf ("\nposle swap\n\n");
 	print (a);
-	// rrotate(&a);
-	// printf ("\nposle rotate\n\n");
-	// print (&a);
-	// rrotate(&a);
-	// printf ("\nposle rotate\n\n");
-	// print (&a);
+	// printf ("\ndo pusha depi b\n\n");
+	// print (a);
+	// push_b(&a, &b);
+	// printf ("\nposle pusha depi b\n\n");
+	// print (a);
 	return (0);
 }
