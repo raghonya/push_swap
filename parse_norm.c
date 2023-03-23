@@ -13,7 +13,9 @@ void	nodeadd_back(t_stack **head, t_stack *new)
 	}
 	a = *head;
 	while ((*head)->next)
+	{
 		*head = (*head)->next;
+	}
 	new->prev = *head;
 	(*head)->next = new;
 	*head = a;

@@ -10,6 +10,10 @@ BONUS = $(wildcard ft_lst*.c)
 
 BONUS_OBJ = $(BONUS:.c=.o)
 
+ifeq ($(shell uname -s), MINGW64_NT-6.1-7601)
+CC	=	gcc
+endif
+
 all: $(NAME)
 
 $(NAME): $(OBJ)

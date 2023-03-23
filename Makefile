@@ -2,7 +2,7 @@ NAME	=	push_swap
 
 CFLAGS	=	#-Wall -Wextra -Werror
 
-f		=	-fsanitize=address -g
+#f		=	-fsanitize=address -g
 
 DEP		=	Makefile push_swap.h
 
@@ -19,12 +19,15 @@ LIB		=	./libft
 
 PLIB	=	./Printf
 
-IFLAGS	=	-I$(LIB) -I$(PLIB) -I./
+IFLAGS	=	-I$(LIB) -I$(PLIB) -I.\
 
 LFLAGS	=	-L$(PLIB) -lftprintf -L$(LIB) -lft
 
 OBJS	=	$(FILES:.c=.o)
 
+ifeq ($(shell uname -s), MINGW64_NT-6.1-7601)
+CC	=	gcc
+endif
 ifeq ($(MAKECMDGOALS), bonus)
 	CMD	=	all
 else
