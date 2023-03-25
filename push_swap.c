@@ -22,14 +22,20 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
+	int		size;
 
 	a = NULL;
 	b = NULL;
 	if (argc == 1)
 		return (0);
 	check_args(&a, argc, argv);
+	size = lstsize(a);
 	indexing(&a);
 	print (a);
+	if (size == 2)
+		swap_a(&a);
+	else if (size > 2 && size < 13)
+		sort_under_12(&a, &b, size);
 	//printf ("do gorcox\n\n");
 	//print (a);
 	//rotate(&a);

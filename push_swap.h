@@ -37,7 +37,10 @@ void	swap_a(t_stack **head);
 void	swap_b(t_stack **head);
 void	push_a(t_stack **head1, t_stack **head2);
 void	push_b(t_stack **head1, t_stack **head2);
-int		rotate(t_stack **head);
-int		rrotate(t_stack **head);
+void	rotate_a(t_stack **head);
+void	rotate_b(t_stack **head);
+void	rrotate_a(t_stack **head);
+void	rrotate_b(t_stack **head);
+void	sort_under_12(t_stack **a, t_stack **b, int size_a);
 
 #endif
