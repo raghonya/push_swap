@@ -22,38 +22,6 @@ void	print(t_stack *a)
 		printf ("Datark a!!!\n");
 }
 
-int		sq_root(int n)
-{
-	int	i;
-
-	i = 1;
-	while (i < n / i)
-	{
-		if (n >= i * i && n < (i + 1) * (i + 1))
-			return (i);
-		i++;
-	}
-}
-
-int		pow_2(int n)
-{
-	int i;
-
-	i = 1;
-	while (n--)
-		i *= 2;
-	return (i);
-}
-
-int		log_2(int n)
-{
-	int	i;
-
-	while (1)
-		if (n >= pow_2(++i) && n < pow_2(i + 1))
-			return (i);
-}
-
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
@@ -67,14 +35,14 @@ int	main(int argc, char **argv)
 	check_args(&a, argc, argv);
 	size = lstsize(a);
 	indexing(&a);
-	//printf ("\nstack a\n\n");
-	//print (a);
-	//if (size == 2)
-	//	swap_a(&a);
-	//else if (size > 2 && size < 13)
-	//	sort_under_12(&a, &b, size);
-	//else
-	//	sort_butterfly(&a, &b);
+	printf ("\nstack a\n\n");
+	print (a);
+	if (size == 2)
+		swap_a(&a);
+	else if (size < 13)
+		sort_under_12(&a, &b, size);
+	else
+		sort_butterfly(&a, &b);
 	//printf ("do gorcox\n\n");
 	//print (a);
 	//rotate(&a);

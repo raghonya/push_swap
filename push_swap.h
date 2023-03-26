@@ -43,5 +43,6 @@ void	rotate_b(t_stack **head);
 void	rrotate_a(t_stack **head);
 void	rrotate_b(t_stack **head);
 void	sort_under_12(t_stack **a, t_stack **b, int size_a);
+void	sort_butterfly(t_stack **a, t_stack **b);
 
 #endif

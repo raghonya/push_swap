@@ -15,6 +15,7 @@ FILES	=	push_swap.c \
 			r_rotate.c \
 			indexing.c \
 			sort_under_12.c \
+			sort_butterfly.c \
 			
 LIB		=	./libft
 

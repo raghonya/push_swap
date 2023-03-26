@@ -25,26 +25,24 @@ void	sort_3(t_stack **a)
 	}
 }
 
+void	shortest_way();
+
 void	sort_under_12(t_stack **a, t_stack **b, int size_a)
 {
 	t_stack	*tmp;
 	int		ind;
 
-	ind = 0;
 	if (size_a > 3)
 	{
+		ind = 0;
 		while (size_a != 3)
 		{
 			tmp = *a;
-			while (tmp)
-			{
-				if ((tmp)->index == ind)
-					break ;
-				tmp = (tmp)->next;
-			}
+			while (ind != tmp->index)
+				tmp = tmp->next;
 			ind++;
 			size_a--;
-			while ((*a)->index != (tmp)->index)
+			while ((*a)->index != tmp->index)
 				rotate_a(a);
 			push_b(a, b);
 		}
