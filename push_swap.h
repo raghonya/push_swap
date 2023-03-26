@@ -28,6 +28,7 @@ typedef	struct s_arr
 }	t_arr;
 
 void	err_push(int a);
+void	print(t_stack *a);
 void	check_args(t_stack **a, int argc, char **argv);
 void	nodeadd_back(t_stack **head, t_stack *new);
 int		lstsize(t_stack *a);

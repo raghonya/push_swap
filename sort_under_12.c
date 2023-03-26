@@ -28,19 +28,30 @@ void	sort_3(t_stack **a)
 void	sort_under_12(t_stack **a, t_stack **b, int size_a)
 {
 	t_stack	*tmp;
-	//int		size;
+	int		ind;
 
-	//size = lstsize(*a);
-	tmp = *a;
-	if (size_a == 3)
-		sort_3(a);
-	else
+	ind = 0;
+	//if (size_a == 3)
+	//	sort_3(a);
+	if (size_a > 3)
 	{
-		while (*a)
+		while (size_a != 3)
 		{
-			if ((*a)->index == size_a)
-				break ;
-			*a = (*a)->next;
+			tmp = *a;
+			while (tmp)
+			{
+				if ((tmp)->index == ind)
+					break ;
+				tmp = (tmp)->next;
+			}
+			ind++;
+			size_a--;
+			while ((*a)->index != (tmp)->index)
+				rotate_a(a);
+			push_b(a, b);
 		}
 	}
+	sort_3(a);
+	while (*b)
+		push_a(a, b);
 }
