@@ -31,8 +31,6 @@ void	sort_under_12(t_stack **a, t_stack **b, int size_a)
 	int		ind;
 
 	ind = 0;
-	//if (size_a == 3)
-	//	sort_3(a);
 	if (size_a > 3)
 	{
 		while (size_a != 3)
