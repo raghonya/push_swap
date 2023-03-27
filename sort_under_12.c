@@ -25,9 +25,50 @@ void	sort_3(t_stack **a)
 	}
 }
 
-void	shortest_way(t_stack **a)
+void	shortest_way_a(t_stack **head, t_stack *val)
 {
-	
+	t_stack	*tmp;
+	int		size;
+	int		i;
+
+	i = 0;
+	tmp = *head;
+	size = lstsize(*head);
+	while ((*head)->value != val->value)
+	{
+		i++;
+		*head = (*head)->next;
+	}
+	*head = tmp;
+	if (i < size / 2)
+		while ((*head)->value != val->value)
+			rotate_a(head);
+	else
+		while ((*head)->value != val->value)
+			rrotate_a(head);
+}
+
+void	shortest_way_b(t_stack **head, t_stack *val)
+{
+	t_stack	*tmp;
+	int		size;
+	int		i;
+
+	i = 0;
+	tmp = *head;
+	size = lstsize(*head);
+	while ((*head)->value != val->value)
+	{
+		i++;
+		*head = (*head)->next;
+	}
+	*head = tmp;
+	if (i < size / 2)
+		while ((*head)->value != val->value)
+			rotate_b(head);
+	else
+		while ((*head)->value != val->value)
+			rrotate_b(head);
 }
 
 void	sort_under_12(t_stack **a, t_stack **b, int size_a)
@@ -45,8 +86,7 @@ void	sort_under_12(t_stack **a, t_stack **b, int size_a)
 				tmp = tmp->next;
 			ind++;
 			size_a--;
-			while ((*a)->index != tmp->index)
-				rotate_a(a);
+			shortest_way_a(a, tmp);
 			push_b(a, b);
 		}
 	}

@@ -12,7 +12,7 @@ void	err_push(int a)
 void	print(t_stack *a)
 {
 	if (a)
-	while (a != NULL)
+	while (a)
 	{
 		printf ("value: %d, index: %d\n", a->value, a->index);
 		a = a->next;
@@ -36,20 +36,20 @@ int	main(int argc, char **argv)
 	indexing(&a);
 	printf ("\nstack a\n\n");
 	print (a);
-	// if (size == 2)
-	// 	swap_a(&a);
-	// else if (size < 13)
-	// 	sort_under_12(&a, &b, size);
-	// else
-	// 	sort_butterfly(&a, &b);
+	if (size == 2)
+		swap_a(&a);
+	else if (size < 13)
+		sort_under_12(&a, &b, size);
+	else
+		sort_butterfly(&a, &b);
 	//printf ("do gorcox\n\n");
 	//print (a);
 	//rotate(&a);
 	//printf ("\nstack b\n\n");
 	//print (b);
 	////printf ("\ndo swap\n\n");
-	//printf ("sortavorac a\n\n");
-	//print (a);
+	printf ("sortavorac a\n\n");
+	print (a);
 	//swap_a(&a);
 	//printf ("\nposle swap\n\n");
 	//print (a);
