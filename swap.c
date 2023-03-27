@@ -8,9 +8,9 @@ static int	swap(t_stack **head)
 		return (0);
 	tmp = (*head)->next;
 	(*head)->next = tmp->next;
-	tmp->next = *head;
 	if (tmp->next)
 		tmp->next->prev = *head;
+	tmp->next = *head;
 	(*head)->prev = tmp;
 	tmp->prev = NULL;
 	*head = tmp;

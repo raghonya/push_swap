@@ -11,6 +11,7 @@ void	err_push(int a)
 
 void	print(t_stack *a)
 {
+	printf ("\n");
 	while (a != NULL)
 	{
 		printf ("value: %d, index: %d\n", a->value, a->index);
@@ -30,6 +31,8 @@ int	main(int argc, char **argv)
 	check_args(&a, argc, argv);
 	indexing(&a);
 	print (a);
+	if (lstsize(a) < 13)
+		sort_under_12(&a, &b);
 	//printf ("do gorcox\n\n");
 	//print (a);
 	//rotate(&a);

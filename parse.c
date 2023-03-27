@@ -56,6 +56,7 @@ void	check_args(t_stack **a, int argc, char **argv)
 	i = -1;
 	while (nums[++i])
 	{
+		// printf ("aaaaa\n");
 		new = malloc(sizeof(t_stack));
 		err_push(!new);
 		new->value = ft_atol(nums[i]);
