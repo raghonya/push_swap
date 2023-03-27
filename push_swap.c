@@ -15,7 +15,6 @@ void	print(t_stack *a)
 	while (a != NULL)
 	{
 		printf ("value: %d, index: %d\n", a->value, a->index);
-		//printf ("%p\n", a);
 		a = a->next;
 	}
 	else
@@ -37,12 +36,12 @@ int	main(int argc, char **argv)
 	indexing(&a);
 	printf ("\nstack a\n\n");
 	print (a);
-	if (size == 2)
-		swap_a(&a);
-	else if (size < 13)
-		sort_under_12(&a, &b, size);
-	else
-		sort_butterfly(&a, &b);
+	// if (size == 2)
+	// 	swap_a(&a);
+	// else if (size < 13)
+	// 	sort_under_12(&a, &b, size);
+	// else
+	// 	sort_butterfly(&a, &b);
 	//printf ("do gorcox\n\n");
 	//print (a);
 	//rotate(&a);

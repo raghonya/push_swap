@@ -4,10 +4,14 @@ int		sq_root(int n)
 {
 	int	i;
 
-	i = 0;
-	while (++i < n / i)
+	i = 1;
+	while (i < n / i)
+	{
 		if (n > i * i && n < (i + 1) * (i + 1))
 			return (i);
+		i++;
+	}
+	return (0);
 }
 
 int		pow_2(int n)
@@ -30,11 +34,6 @@ int		log_2(int n)
 			return (i);
 }
 
-void	optimize_factor(int *op, int size)
-{
-	*op = sq_root(size) + log_2(size);
-}
-
 void	sort_butterfly(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
@@ -44,9 +43,9 @@ void	sort_butterfly(t_stack **a, t_stack **b)
 
 	i = -1;
 	tmp = *a;
+	op = sq_root(size) + log_2(size);
 	size = lstsize(*a);
 	optimize_factor(&op, size);
-	printf ("optimizer: %d\n", op);
 	while (++i < size)
 	{
 		*a = tmp;

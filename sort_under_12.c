@@ -25,7 +25,10 @@ void	sort_3(t_stack **a)
 	}
 }
 
-void	shortest_way();
+void	shortest_way(t_stack **a)
+{
+	
+}
 
 void	sort_under_12(t_stack **a, t_stack **b, int size_a)
 {
