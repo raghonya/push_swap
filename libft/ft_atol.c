@@ -11,6 +11,16 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+
+void	err_push_for_lib(int a)
+{
+	if (a)
+	{
+		ft_putstr_fd("Error\n", STDOUT_FILENO);
+		exit(1);
+	}
+}
 
 long	ft_atol(char *str)
 {
@@ -29,11 +39,11 @@ long	ft_atol(char *str)
 	}
 	while (*str == '0')
 		str++;
-	if (ft_strlen (str) > 10)
-		exit (1);
+	err_push_for_lib (ft_strlen(str) > 10);
 	while (ft_isdigit(*str))
 		num = num * 10 + (*(str++) - 48);
-	if (num > INT_MAX || num < INT_MIN)
-		exit (1);
+	if (sign == -1 && num == 2147483648)
+		return (sign * num);
+	err_push_for_lib (num > INT_MAX || num < INT_MIN);
 	return (sign * num);
 }
