@@ -13,7 +13,12 @@ char	**create_nums(int argc, char **argv)
 	i = -1;
 	while (join[++i])
 		err_push(join[i] != '+' && join[i] != '-' \
-		&& join[i] != ' ' && !ft_isdigit(join[i]));
+		&& join[i] != ' ' && join[i] != '\n' \
+		&& join[i] == '\t' && !ft_isdigit(join[i]));
+	i = -1;
+	while (join[++i])
+		if (join[i] == '\n' || join[i] == '\t')
+			join[i] = ' ';
 	nums = ft_split (join, ' ');
 	err_push(!nums || !(*nums));
 	free(join);
@@ -56,6 +61,7 @@ void	check_args(t_stack **a, int argc, char **argv)
 	i = -1;
 	while (nums[++i])
 	{
+		printf ("%s\n", nums[i]);
 		new = malloc(sizeof(t_stack));
 		err_push(!new);
 		new->value = ft_atol(nums[i]);
