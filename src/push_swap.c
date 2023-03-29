@@ -21,17 +21,17 @@ void	err_push(int a)
 	}
 }
 
-// void	print(t_stack *a)
-// {
-// 	if (a)
-// 		while (a)
-// 		{
-// 			printf ("value: %d, index: %d\n", a->value, a->index);
-// 			a = a->next;
-// 		}
-// 	else
-// 		printf ("Datark a!!!\n");
-// }
+void	print(t_stack *a)
+{
+	if (a)
+		while (a)
+		{
+			printf ("value: %d, index: %d\n", a->value, a->index);
+			a = a->next;
+		}
+	else
+		printf ("Datark a!!!\n");
+}
 
 int	main(int argc, char **argv)
 {

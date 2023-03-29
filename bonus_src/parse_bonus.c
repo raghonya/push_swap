@@ -1,4 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_norm.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: raghonya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/29 20:20:42 by raghonya          #+#    #+#             */
+/*   Updated: 2023/03/29 20:20:43 by raghonya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <push_swap_bonus.h>
+
+void	err_push(int a)
+{
+	if (a)
+	{
+		ft_putstr_fd("Error\n", STDOUT_FILENO);
+		exit(1);
+	}
+}
 
 char	**create_nums(int argc, char **argv)
 {
@@ -27,22 +48,6 @@ char	**create_nums(int argc, char **argv)
 	return (nums);
 }
 
-void	check_ascend(t_stack *a)
-{
-	int		size;
-
-	size = lstsize(a);
-	if (size < 2)
-		exit (0);
-	if (size == 2)
-	{
-		if (a->value < a->next->value)
-			exit(0);
-		return ;
-	}
-	check_ascend_2(a->next);
-}
-
 void	check_back(t_stack *a, int tiv)
 {
 	while (a->next)
@@ -69,7 +74,6 @@ void	check_args(t_stack **a, int argc, char **argv)
 		nodeadd_back(a, new);
 		check_back(*a, new->value);
 	}
-	check_ascend(*a);
 	i = -1;
 	while (nums[++i])
 		free(nums[i]);

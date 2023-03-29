@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
 # include <libft.h>
 # include <ft_printf.h>
@@ -48,15 +48,21 @@ void	indexing(t_stack **a);
 void	check_ascend_2(t_stack *a);
 void	swap_a(t_stack **head);
 void	swap_b(t_stack **head);
+void	swap_ab(t_stack **head, t_stack **head2);
 void	push_a(t_stack **head1, t_stack **head2);
 void	push_b(t_stack **head1, t_stack **head2);
 void	rotate_a(t_stack **head);
 void	rotate_b(t_stack **head);
+void	rotate_ab(t_stack **head, t_stack **head2);
 void	rrotate_a(t_stack **head);
 void	rrotate_b(t_stack **head);
+void	rrotate_ab(t_stack **head, t_stack **head2);
 void	sort_under_12(t_stack **a, t_stack **b, int size_a);
 void	sort_butterfly(t_stack **a, t_stack **b);
 void	shortest_way_a(t_stack **head, t_stack *val);
 void	shortest_way_b(t_stack **head, t_stack *val, int i);
+void	checking(t_stack **a, t_stack **b, char *input);
+void	check_input(char *s, char **instr);
+void	fill(char **s);
 
 #endif

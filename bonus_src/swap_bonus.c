@@ -1,41 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   r_rotate.c                                         :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: raghonya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/29 20:21:20 by raghonya          #+#    #+#             */
-/*   Updated: 2023/03/29 20:21:22 by raghonya         ###   ########.fr       */
+/*   Created: 2023/03/29 20:22:00 by raghonya          #+#    #+#             */
+/*   Updated: 2023/03/29 20:22:02 by raghonya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include <push_swap_bonus.h>
 
-int	rrotate(t_stack **head)
+static int	swap(t_stack **head)
 {
 	t_stack	*tmp;
 
-	if (!(*head) || !(*head)->next || !head)
+	if (!head || !*head || !(*head)->next)
 		return (0);
-	tmp = *head;
-	while ((*head)->next)
-		*head = (*head)->next;
-	(*head)->prev->next = NULL;
-	tmp->prev = *head;
-	(*head)->next = tmp;
-	(*head)->prev = NULL;
+	tmp = (*head)->next;
+	(*head)->next = tmp->next;
+	if (tmp->next)
+		tmp->next->prev = *head;
+	tmp->next = *head;
+	(*head)->prev = tmp;
+	tmp->prev = NULL;
+	*head = tmp;
 	return (1);
 }
 
-void	rrotate_a(t_stack **head)
+void	swap_a(t_stack **head)
 {
-	if (rrotate(head))
-		ft_printf ("rra\n");
+	swap(head);
 }
 
-void	rrotate_b(t_stack **head)
+void	swap_b(t_stack **head)
 {
-	if (rrotate(head))
-		ft_printf ("rrb\n");
+	swap(head);
+}
+
+void	swap_ab(t_stack **h1, t_stack **h2)
+{
+	swap_a(h1);
+	swap_b(h2);
 }

@@ -1,30 +1,38 @@
 NAME	=	push_swap
 
-CFLAGS	=	-Wall -Wextra -Werror
+NAME_BONUS	=	checker
 
-f		=	-fsanitize=address -g
+CFLAGS	=	#-Wall -Wextra -Werror
 
-DEP		=	Makefile push_swap.h
+f		=	#-fsanitize=address -g
 
-FILES	=	push_swap.c \
-			parse.c \
-			parse_norm.c \
-			push.c \
-			swap.c \
-			rotate.c \
-			r_rotate.c \
-			indexing.c \
-			sort_under_12.c \
-			sort_butterfly.c \
+DEP		=	Makefile ./includes/push_swap.h
 
-BONUS	=	bonus/checker_bonus.c \
-			bonus/parse_bonus.c \
+FILES	=	src/push_swap.c \
+			src/parse.c \
+			src/parse_norm.c \
+			src/push.c \
+			src/swap.c \
+			src/rotate.c \
+			src/r_rotate.c \
+			src/indexing.c \
+			src/sort_under_12.c \
+			src/sort_butterfly.c 
+
+BONUS	=	bonus_src/checker_bonus.c \
+			bonus_src/checking_bonus.c \
+			bonus_src/parse_bonus.c \
+			bonus_src/parse_norm_bonus.c \
+			bonus_src/push_bonus.c \
+			bonus_src/swap_bonus.c \
+			bonus_src/rotate_bonus.c \
+			bonus_src/r_rotate_bonus.c 
 
 LIB		=	./libft
 
 PLIB	=	./Printf
 
-IFLAGS	=	-I$(LIB) -I$(PLIB) -I.\
+IFLAGS	=	-I$(LIB) -I$(PLIB) -I./includes
 
 LFLAGS	=	-L$(PLIB) -lftprintf -L$(LIB) -lft
 
@@ -32,39 +40,38 @@ OBJS	=	$(FILES:.c=.o)
 
 OBJS_BONUS	=	$(BONUS:.c=.o)
 
+CMD	=	$(MAKECMDGOALS)
+
 ifeq ($(shell uname -s), MINGW64_NT-6.1-7601)
 CC	=	gcc
 endif
 
 ifeq ($(MAKECMDGOALS), bonus)
 	CMD	=	all
-else
-	CMD	=	$(MAKECMDGOALS)
+	DEP = Makefile ./includes/push_swap_bonus.h
 endif
 
 all: libs $(NAME)
+
+libs:
+	@$(MAKE) $(CMD) -C $(LIB)
+	@$(MAKE) $(CMD) -C $(PLIB)
 
 %.o: %.c $(DEP) 
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) $(CFLAGS) $(f) $(IFLAGS) $(LFLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(f) $(OBJS) $(IFLAGS) $(LFLAGS) -o $(NAME)
 
-libs:
-	@$(MAKE) $(MAKECMDGOALS) -C $(LIB)
-	@$(MAKE) $(MAKECMDGOALS) -C $(PLIB)
+bonus: libs $(OBJS_BONUS)
+		$(CC) $(CFLAGS) $(f) $(OBJS_BONUS) $(IFLAGS) $(LFLAGS) -o $(NAME_BONUS)
 
 clean: libs
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(OBJS_BONUS)
 
 fclean: clean
-	rm -f $(NAME)
-
-bonus: $(OBJS_BONUS)
-		$(CC) $(OBJS_BONUS) $(CFLAGS) $(f) -I../libft -I../Printf \
-		-I./ -L.$(PLIB) -lftprintf -L.$(LIB) -lft -o $(NAME_BONUS)
-
+	rm -f $(NAME) $(NAME_BONUS)
 
 re:	fclean all
 
-.PHONY: all clean fclean re run_libs
+.PHONY: all clean fclean re libs bonus
