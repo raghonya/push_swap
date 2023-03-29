@@ -16,7 +16,10 @@ FILES	=	push_swap.c \
 			indexing.c \
 			sort_under_12.c \
 			sort_butterfly.c \
-			
+
+BONUS	=	bonus/checker_bonus.c \
+			bonus/parse_bonus.c \
+
 LIB		=	./libft
 
 PLIB	=	./Printf
@@ -26,6 +29,8 @@ IFLAGS	=	-I$(LIB) -I$(PLIB) -I.\
 LFLAGS	=	-L$(PLIB) -lftprintf -L$(LIB) -lft
 
 OBJS	=	$(FILES:.c=.o)
+
+OBJS_BONUS	=	$(BONUS:.c=.o)
 
 ifeq ($(shell uname -s), MINGW64_NT-6.1-7601)
 CC	=	gcc
@@ -56,6 +61,8 @@ fclean: clean
 	rm -f $(NAME)
 
 bonus: $(OBJS_BONUS)
+		$(CC) $(OBJS_BONUS) $(CFLAGS) $(f) -I../libft -I../Printf \
+		-I./ -L.$(PLIB) -lftprintf -L.$(LIB) -lft -o $(NAME_BONUS)
 
 
 re:	fclean all
