@@ -1,14 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: raghonya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/29 20:22:00 by raghonya          #+#    #+#             */
+/*   Updated: 2023/03/29 20:22:02 by raghonya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <push_swap.h>
 
 static int	swap(t_stack **head)
 {
 	t_stack	*tmp;
-	t_stack	*tmp2;
 
 	if (!head || !*head || !(*head)->next)
 		return (0);
 	tmp = (*head)->next;
-	
 	(*head)->next = tmp->next;
 	if (tmp->next)
 		tmp->next->prev = *head;

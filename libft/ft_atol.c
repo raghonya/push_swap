@@ -44,6 +44,6 @@ long	ft_atol(char *str)
 		num = num * 10 + (*(str++) - 48);
 	if (sign == -1 && num == 2147483648)
 		return (sign * num);
-	err_push_for_lib (num > INT_MAX || num < INT_MIN);
+	err_push_for_lib (num > INT_MAX);
 	return (sign * num);
 }

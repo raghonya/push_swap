@@ -1,8 +1,8 @@
 NAME	=	push_swap
 
-CFLAGS	=	#-Wall -Wextra -Werror
+CFLAGS	=	-Wall -Wextra -Werror
 
-#f		=	-fsanitize=address -g
+f		=	-fsanitize=address -g
 
 DEP		=	Makefile push_swap.h
 
@@ -30,6 +30,7 @@ OBJS	=	$(FILES:.c=.o)
 ifeq ($(shell uname -s), MINGW64_NT-6.1-7601)
 CC	=	gcc
 endif
+
 ifeq ($(MAKECMDGOALS), bonus)
 	CMD	=	all
 else
@@ -53,6 +54,9 @@ clean: libs
 
 fclean: clean
 	rm -f $(NAME)
+
+bonus: $(OBJS_BONUS)
+
 
 re:	fclean all
 

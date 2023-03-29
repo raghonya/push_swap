@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   indexing.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: raghonya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/29 20:20:25 by raghonya          #+#    #+#             */
+/*   Updated: 2023/03/29 20:20:26 by raghonya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <push_swap.h>
 
 void	pomoshnik(int *arr, t_index a, t_arr *left, t_arr *right)
@@ -35,7 +47,7 @@ void	kpcn(int *arr, int beg, int mid, int end)
 	while (++(a.j) < end - mid)
 		right.a[a.j] = arr[mid + a.j + 1];
 	pomoshnik(arr, a, &left, &right);
-	free(right.a);	
+	free(right.a);
 	free(left.a);
 }
 
@@ -71,7 +83,7 @@ void	indexing(t_stack **a)
 {
 	t_stack	*tmp;
 	t_arr	arr;
-	int	i;
+	int		i;
 
 	i = -1;
 	tmp = *a;

@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: raghonya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/29 20:21:30 by raghonya          #+#    #+#             */
+/*   Updated: 2023/03/29 20:21:30 by raghonya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <push_swap.h>
 
- int	rotate(t_stack **head)
+int	rotate(t_stack **head)
 {
-	t_stack *tmp;
-	t_stack *tmp2;
+	t_stack	*tmp;
+	t_stack	*tmp2;
 
 	if (!(*head) || !(*head)->next || !head)
 		return (0);

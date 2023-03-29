@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_under_12.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: raghonya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/29 20:21:48 by raghonya          #+#    #+#             */
+/*   Updated: 2023/03/29 20:21:48 by raghonya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <push_swap.h>
 
 void	sort_3(t_stack **a)
@@ -48,22 +60,9 @@ void	shortest_way_a(t_stack **head, t_stack *val)
 			rrotate_a(head);
 }
 
-void	shortest_way_b(t_stack **head, t_stack *val)
+void	shortest_way_b(t_stack **head, t_stack *val, int i)
 {
-	t_stack	*tmp;
-	int		size;
-	int		i;
-
-	i = 0;
-	tmp = *head;
-	size = lstsize(*head);
-	while ((*head)->value != val->value)
-	{
-		i++;
-		*head = (*head)->next;
-	}
-	*head = tmp;
-	if (i < size / 2)
+	if (i < lstsize(*head) / 2)
 		while ((*head)->value != val->value)
 			rotate_b(head);
 	else
