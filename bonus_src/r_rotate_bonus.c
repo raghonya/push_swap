@@ -12,12 +12,12 @@
 
 #include <push_swap_bonus.h>
 
-int	rrotate(t_stack **head)
+static void	rrotate(t_stack **head)
 {
 	t_stack	*tmp;
 
 	if (!(*head) || !(*head)->next || !head)
-		return (0);
+		return ;
 	tmp = *head;
 	while ((*head)->next)
 		*head = (*head)->next;
@@ -25,7 +25,6 @@ int	rrotate(t_stack **head)
 	tmp->prev = *head;
 	(*head)->next = tmp;
 	(*head)->prev = NULL;
-	return (1);
 }
 
 void	rrotate_a(t_stack **head)

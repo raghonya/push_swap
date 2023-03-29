@@ -12,12 +12,12 @@
 
 #include <push_swap_bonus.h>
 
-static int	swap(t_stack **head)
+static void	swap(t_stack **head)
 {
 	t_stack	*tmp;
 
 	if (!head || !*head || !(*head)->next)
-		return (0);
+		return ;
 	tmp = (*head)->next;
 	(*head)->next = tmp->next;
 	if (tmp->next)
@@ -26,7 +26,6 @@ static int	swap(t_stack **head)
 	(*head)->prev = tmp;
 	tmp->prev = NULL;
 	*head = tmp;
-	return (1);
 }
 
 void	swap_a(t_stack **head)

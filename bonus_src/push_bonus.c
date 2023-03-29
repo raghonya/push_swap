@@ -12,12 +12,12 @@
 
 #include <push_swap_bonus.h>
 
-static int	push(t_stack **h1, t_stack **h2)
+static void	push(t_stack **h1, t_stack **h2)
 {
 	t_stack	*tmp;
 
 	if (!(*h1) || !h1)
-		return (0);
+		return ;
 	tmp = (*h1)->next;
 	if (tmp)
 		tmp->prev = NULL;
@@ -26,7 +26,6 @@ static int	push(t_stack **h1, t_stack **h2)
 	(*h1)->next = *h2;
 	*h2 = *h1;
 	*h1 = tmp;
-	return (1);
 }
 
 void	push_a(t_stack **h1, t_stack **h2)

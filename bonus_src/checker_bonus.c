@@ -15,7 +15,10 @@ void	print(t_stack *a)
 void	is_ko(int a)
 {
 	if (a)
-		ft_printf("KO");
+	{
+		ft_printf("KO\n");
+		exit (1);
+	}
 }
 
 int main(int argc, char **argv)
@@ -36,16 +39,13 @@ int main(int argc, char **argv)
 		checking(&a, &b, input);
 		input = get_next_line(0);
 	}
-	if (!a || b)
-		ft_printf("KO");
+	is_ko(!a || b);
+	print(a);
 	while (a->next)
 	{
-		if (a->value < a->next->value)
-		{
-			ft_printf ("KO");
-			return (0);
-		}
+		is_ko(a->value > a->next->value);
+		a = a->next;
 	}
-	ft_printf ("OK");
+	ft_printf ("OK\n");
 	return (0);
 }
