@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: raghonya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/30 20:15:58 by raghonya          #+#    #+#             */
+/*   Updated: 2023/03/30 20:15:58 by raghonya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <push_swap_bonus.h>
 
-void	print(t_stack *a)
-{
-	if (a)
-		while (a)
-		{
-			printf ("value: %d, index: %d\n", a->value, a->index);
-			a = a->next;
-		}
-	else
-		printf ("Datark a!!!\n");
-}
+// void	print(t_stack *a)
+// {
+// 	if (a)
+// 		while (a)
+// 		{
+// 			printf ("value: %d\n", a->value);
+// 			a = a->next;
+// 		}
+// 	else
+// 		printf ("Datark a!!!\n");
+// }
 
 void	is_ko(int a)
 {
@@ -40,7 +52,7 @@ int main(int argc, char **argv)
 		input = get_next_line(0);
 	}
 	is_ko(!a || b);
-	print(a);
+	// print(a);
 	while (a->next)
 	{
 		is_ko(a->value > a->next->value);

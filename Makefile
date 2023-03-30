@@ -1,6 +1,6 @@
 NAME	=	push_swap
 
-NAME_BONUS	=	checker
+NAME_B	=	checker
 
 CFLAGS	=	#-Wall -Wextra -Werror
 
@@ -38,7 +38,7 @@ LFLAGS	=	-L$(PLIB) -lftprintf -L$(LIB) -lft
 
 OBJS	=	$(FILES:.c=.o)
 
-OBJS_BONUS	=	$(BONUS:.c=.o)
+OBJS_B	=	$(BONUS:.c=.o)
 
 CMD	=	$(MAKECMDGOALS)
 
@@ -57,20 +57,22 @@ libs:
 	@$(MAKE) $(CMD) -C $(LIB)
 	@$(MAKE) $(CMD) -C $(PLIB)
 
-%.o: %.c $(DEP) 
-	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
-
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(f) $(OBJS) $(IFLAGS) $(LFLAGS) -o $(NAME)
 
-bonus: libs $(OBJS_BONUS)
-		$(CC) $(CFLAGS) $(f) $(OBJS_BONUS) $(IFLAGS) $(LFLAGS) -o $(NAME_BONUS)
+bonus: libs $(NAME_B)
+
+$(NAME_B): $(OBJS_B)
+		$(CC) $(CFLAGS) $(f) $(OBJS_B) $(IFLAGS) $(LFLAGS) -o $(NAME_B)
+
+%.o: %.c $(DEP) 
+	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 clean: libs
-	rm -f $(OBJS) $(OBJS_BONUS)
+	rm -f $(OBJS) $(OBJS_B)
 
 fclean: clean
-	rm -f $(NAME) $(NAME_BONUS)
+	rm -f $(NAME) $(NAME_B)
 
 re:	fclean all
 

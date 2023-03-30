@@ -1,6 +1,8 @@
 # Prerequisites
 *.d
 minishell*
+checker
+checker_Mac
 
 # Object files
 *.o

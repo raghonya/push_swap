@@ -15,7 +15,8 @@
 void	sort_3(t_stack **a)
 {
 	if ((*a)->value < (*a)->next->next->value \
-		&& (*a)->value < (*a)->next->value)
+		&& (*a)->value < (*a)->next->value \
+		&& (*a)->next->value > (*a)->next->next->value)
 	{
 		swap_a(a);
 		rotate_a(a);
@@ -30,7 +31,9 @@ void	sort_3(t_stack **a)
 		&& (*a)->value > (*a)->next->next->value \
 		&& (*a)->next->value < (*a)->next->next->value)
 		rotate_a(a);
-	else
+	else if ((*a)->value > (*a)->next->next->value \
+		&& (*a)->value > (*a)->next->value \
+		&& (*a)->next->value < (*a)->next->next->value)
 	{
 		swap_a(a);
 		rrotate_a(a);
@@ -85,10 +88,12 @@ void	sort_under_12(t_stack **a, t_stack **b, int size_a)
 				tmp = tmp->next;
 			ind++;
 			size_a--;
+			// printf ("index: %d\n", ind);
 			shortest_way_a(a, tmp);
 			push_b(a, b);
 		}
 	}
+	// print(*a);
 	sort_3(a);
 	while (*b)
 		push_a(a, b);
