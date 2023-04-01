@@ -13,8 +13,6 @@
 #include "libft.h"
 #include <stdio.h>
 
-//# ifeq ($(shell uname -s), MINGW64_NT-6.1-7601)
-
 void	err_push_for_lib(int a)
 {
 	if (a)

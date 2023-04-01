@@ -36,4 +36,5 @@ void	checking(t_stack **a, t_stack **b, char *input)
 		rrotate_b(b);
 	else if (!ft_strcmp(input, "rrr\n"))
 		rrotate_ab(a, b);
+	free(input);
 }

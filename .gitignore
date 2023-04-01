@@ -2,7 +2,6 @@
 *.d
 minishell*
 checker
-checker_Mac
 .DS_Store
 
 # Object files

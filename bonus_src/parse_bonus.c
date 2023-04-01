@@ -47,7 +47,7 @@ char	**create_nums(int argc, char **argv)
 		if (join[i] == '\n' || join[i] == '\t')
 			join[i] = ' ';
 	nums = ft_split (join, ' ');
-	err_push(!nums || !(*nums));
+	err_push(!nums);
 	free(join);
 	return (nums);
 }
@@ -67,6 +67,8 @@ void	check_args(t_stack **a, int argc, char **argv)
 	char	**nums;
 	int		i;
 
+	if (argc == 1)
+		exit(0);
 	nums = create_nums(argc, argv);
 	i = -1;
 	while (nums[++i])
@@ -78,6 +80,8 @@ void	check_args(t_stack **a, int argc, char **argv)
 		nodeadd_back(a, new);
 		check_back(*a, new->value);
 	}
+	if (!*a)
+		exit(0);
 	i = -1;
 	while (nums[++i])
 		free(nums[i]);
