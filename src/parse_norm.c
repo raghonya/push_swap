@@ -46,17 +46,11 @@ int	lstsize(t_stack *a)
 	return (size);
 }
 
-void	check_ascend_2(t_stack *a)
+void	check_back(t_stack *a, int tiv)
 {
-	int	flag;
-
-	flag = 0;
 	while (a->next)
 	{
-		if (!(a->value > a->prev->value && a->value < a->next->value))
-			flag = 1;
+		err_push (a->value == tiv);
 		a = a->next;
 	}
-	if (flag == 0)
-		exit (0);
 }

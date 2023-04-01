@@ -12,12 +12,16 @@
 
 #include <push_swap_bonus.h>
 
-void	err_push(int a)
+void	plus_minus(char *s)
 {
-	if (a)
+	int	i;
+
+	i = 0;
+	while (s[i])
 	{
-		ft_putstr_fd("Error\n", STDOUT_FILENO);
-		exit(1);
+		err_push ((s[i] == '+' || s[i] == '-') && !ft_isdigit(s[i + 1]));
+		i++;
+		err_push ((s[i] == '+' || s[i] == '-') && ft_isdigit(s[i - 1]));
 	}
 }
 

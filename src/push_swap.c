@@ -16,22 +16,10 @@ void	err_push(int a)
 {
 	if (a)
 	{
-		ft_putstr_fd("Error\n", STDOUT_FILENO);
+		ft_putstr_fd("Error\n", STDERR_FILENO);
 		exit(1);
 	}
 }
-
-// void	print(t_stack *a)
-// {
-// 	if (a)
-// 		while (a)
-// 		{
-// 			printf ("value: %d, index: %d\n", a->value, a->index);
-// 			a = a->next;
-// 		}
-// 	else
-// 		printf ("Datark a!!!\n");
-// }
 
 int	main(int argc, char **argv)
 {
@@ -51,6 +39,6 @@ int	main(int argc, char **argv)
 	else if (size > 2 && size < 13)
 		sort_under_12(&a, &b, size);
 	else
-		sort_butterfly(&a, &b);
+		sort_butterfly(&a, &b, size);
 	return (0);
 }

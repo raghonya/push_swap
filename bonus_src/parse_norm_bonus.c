@@ -46,7 +46,7 @@ int	lstsize(t_stack *a)
 	return (size);
 }
 
-void	fill(char (**s))
+void	fill(char **s)
 {
 	s[0] = "pa\n";
 	s[1] = "pb\n";

@@ -98,4 +98,5 @@ void	indexing(t_stack **a)
 	voreve_sort(arr.a, 0, arr.size - 1);
 	indexing_final(a, arr);
 	*a = tmp;
+	free(arr.a);
 }

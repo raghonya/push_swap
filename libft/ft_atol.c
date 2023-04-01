@@ -27,7 +27,7 @@ void	err_push_for_lib(int a)
 long	ft_atol(char *str)
 {
 	int		sign;
-	long long	num;
+	long	num;
 
 	num = 0;
 	sign = 1;

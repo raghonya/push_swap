@@ -79,13 +79,11 @@ void	pushing(t_stack **a, t_stack **b, int *i, int size)
 		rotate_a(a);
 }
 
-void	sort_butterfly(t_stack **a, t_stack **b)
+void	sort_butterfly(t_stack **a, t_stack **b, int size)
 {
-	int		size;
 	int		i;
 
 	i = 0;
-	size = lstsize(*a);
 	while (i < size)
 		pushing(a, b, &i, size);
 	while (*b)

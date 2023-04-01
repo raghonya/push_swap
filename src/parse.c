@@ -12,6 +12,19 @@
 
 #include <push_swap.h>
 
+void	plus_minus(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		err_push ((s[i] == '+' || s[i] == '-') && !ft_isdigit(s[i + 1]));
+		i++;
+		err_push ((s[i] == '+' || s[i] == '-') && ft_isdigit(s[i - 1]));
+	}
+}
+
 char	**create_nums(int argc, char **argv)
 {
 	char	**nums;
@@ -29,14 +42,30 @@ char	**create_nums(int argc, char **argv)
 		&& join[i] != ' ' && join[i] != '\n' \
 		&& join[i] != '\t' && !ft_isdigit(join[i]));
 	}
+	plus_minus(join);
 	i = -1;
 	while (join[++i])
 		if (join[i] == '\n' || join[i] == '\t')
 			join[i] = ' ';
 	nums = ft_split (join, ' ');
-	err_push(!nums || !(*nums));
+	err_push(!nums);
 	free(join);
 	return (nums);
+}
+
+void	check_ascend_2(t_stack *a)
+{
+	int	flag;
+
+	flag = 0;
+	while (a->next)
+	{
+		if (!(a->value > a->prev->value && a->value < a->next->value))
+			flag = 1;
+		a = a->next;
+	}
+	if (flag == 0)
+		exit (0);
 }
 
 void	check_ascend(t_stack *a)
@@ -53,15 +82,6 @@ void	check_ascend(t_stack *a)
 		return ;
 	}
 	check_ascend_2(a->next);
-}
-
-void	check_back(t_stack *a, int tiv)
-{
-	while (a->next)
-	{
-		err_push (a->value == tiv);
-		a = a->next;
-	}
 }
 
 void	check_args(t_stack **a, int argc, char **argv)

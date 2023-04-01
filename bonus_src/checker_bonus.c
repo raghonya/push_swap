@@ -12,17 +12,14 @@
 
 #include <push_swap_bonus.h>
 
-// void	print(t_stack *a)
-// {
-// 	if (a)
-// 		while (a)
-// 		{
-// 			printf ("value: %d\n", a->value);
-// 			a = a->next;
-// 		}
-// 	else
-// 		printf ("Datark a!!!\n");
-// }
+void	err_push(int a)
+{
+	if (a)
+	{
+		ft_putstr_fd("Error\n", STDERR_FILENO);
+		exit(1);
+	}
+}
 
 void	is_ko(int a)
 {
@@ -33,7 +30,7 @@ void	is_ko(int a)
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	char	*(instr[12]);
 	char	*input;
@@ -52,7 +49,6 @@ int main(int argc, char **argv)
 		input = get_next_line(0);
 	}
 	is_ko(!a || b);
-	// print(a);
 	while (a->next)
 	{
 		is_ko(a->value > a->next->value);
