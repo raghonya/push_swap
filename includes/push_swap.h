@@ -57,6 +57,8 @@ void	rotate_ab(t_stack **head, t_stack **head2);
 void	rrotate_a(t_stack **head);
 void	rrotate_b(t_stack **head);
 void	rrotate_ab(t_stack **head, t_stack **head2);
+int		sq_root(int n);
+int		log_2(int n);
 void	sort_under_12(t_stack **a, t_stack **b, int size_a);
 void	sort_butterfly(t_stack **a, t_stack **b, int size);
 void	shortest_way_a(t_stack **head, t_stack *val);

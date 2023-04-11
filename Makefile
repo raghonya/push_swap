@@ -2,9 +2,9 @@ NAME	=	push_swap
 
 NAME_B	=	checker
 
-CFLAGS	=	#-Wall -Wextra -Werror
+CFLAGS	=	-Wall -Wextra -Werror
 
-f		=	#-fsanitize=address -g
+f		=	-fsanitize=address -g
 
 DEP		=	Makefile ./includes/push_swap.h
 
@@ -16,6 +16,7 @@ FILES	=	src/push_swap.c \
 			src/rotate.c \
 			src/r_rotate.c \
 			src/indexing.c \
+			src/optimize.c \
 			src/sort_under_12.c \
 			src/sort_butterfly.c 
 
